@@ -1,0 +1,58 @@
+rules:
+  - id: DET-PWSH-001
+    name: Suspicious PowerShell Execution
+    severity: high
+    enabled: true
+    description: PowerShell execution containing encoded-command or common suspicious indicators.
+    match:
+      type: regex
+      patterns:
+        - "powershell"
+        - "encodedcommand"
+        - "invoke-expression"
+
+  - id: DET-SQLI-001
+    name: Possible SQL Injection Indicator
+    severity: high
+    enabled: true
+    description: Web input contains common SQL injection syntax indicators.
+    match:
+      type: regex
+      patterns:
+        - "union\\s+select"
+        - "or\\s+1=1"
+        - "--\\s*$"
+        - "/\\*.*\\*/"
+
+  - id: DET-SCAN-001
+    name: Network Port Scan Indicator
+    severity: medium
+    enabled: true
+    description: Firewall/network event reports scanning behavior.
+    match:
+      type: regex
+      patterns:
+        - "port scan"
+        - "portscan"
+        - "multiple destination ports"
+
+  - id: DET-MAL-001
+    name: Malware Indicator
+    severity: critical
+    enabled: true
+    description: Event contains a lab malware/hash indicator keyword.
+    match:
+      type: regex
+      patterns:
+        - "eicar"
+        - "malware_detected"
+        - "known_bad_hash"
+
+  - id: DET-BRUTE-001
+    name: Brute Force Authentication Pattern
+    severity: high
+    enabled: true
+    description: Repeated failed authentication from the same source IP in a 10-minute window.
+    match:
+      type: failed_login_threshold
+      threshold: 5
