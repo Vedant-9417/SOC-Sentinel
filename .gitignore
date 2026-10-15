@@ -7,3 +7,41 @@ node_modules/
 dist/
 .venv
 backend/data/*.db
+```gitignore
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Node.js / Frontend
+node_modules/
+dist/
+npm-debug.log*
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+logs/
+tmp/
+temp/
+
+# Local databases and backups
+backend/data/*.db
+backend/data/*.sqlite
+backend/data/*.sqlite3
+*.db-journal
